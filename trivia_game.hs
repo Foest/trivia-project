@@ -10,10 +10,6 @@ main = do
   disconnect conn
   return ()
 
-
---takes a connection to a database and creates a game
---init_game connection =
-
 init_category connection = do
   randomCategory <- (randomRIO(1,215828) :: IO Integer)
   stmt <- prepare connection ("SELECT category, value, clue, answer FROM clues JOIN documents ON clues.id = documents.id JOIN classifications ON clues.id = classifications.clueid JOIN categories ON catid = categories.id WHERE categories.id=" ++ show randomCategory)
