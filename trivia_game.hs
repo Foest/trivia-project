@@ -19,3 +19,10 @@ init_category connection = do
   statementResults <- fetchAllRowsAL' stmt
   show_statement_results statementResults
   return ()
+
+show_db_tables connection = do
+  db_tables <- getTables connection
+  mapM_ putStrLn db_tables
+  return ()
+
+show_statement_results results = return ()
