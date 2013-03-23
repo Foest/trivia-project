@@ -28,4 +28,9 @@ print_db_tables connection = do
   mapM_ putStrLn db_tables
   return ()
 
-show_statement_results results = return ()
+--should print out an entire category, at the moment only prints name/number of
+--questions
+print_category statementResults = do
+  putStrLn . show . length $ statementResults
+  putStrLn categoryName
+  where categoryName = fromSql . snd $ (head statementResults) !! 0
