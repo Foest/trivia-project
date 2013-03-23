@@ -17,7 +17,9 @@ get_random_category connection = do
   stmt <- prepare connection ("SELECT category, value, clue, answer FROM clues JOIN documents ON clues.id = documents.id JOIN classifications ON clues.id = classifications.clueid JOIN categories ON catid = categories.id WHERE categories.id=" ++ show randomCategory)
   execute stmt []
   statementResults <- fetchAllRowsAL' stmt
-  show_statement_results statementResults
+  if length statementResults == 0
+    then get_random_category connection
+    else print_category statementResults
   return ()
 
 show_db_tables connection = do
