@@ -22,7 +22,8 @@ get_random_category connection = do
     else print_category statementResults
   return ()
 
-show_db_tables connection = do
+--prints the db tables
+print_db_tables connection = do
   db_tables <- getTables connection
   mapM_ putStrLn db_tables
   return ()
