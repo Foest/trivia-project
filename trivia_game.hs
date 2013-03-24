@@ -11,6 +11,12 @@ main = do
   disconnect conn
   return ()
 
+{-
+IMPLEMENT:
+init_category
+init_game
+-}
+
 --grabs a random category from db, prints the questions
 get_random_category connection = do
   randomCategory <- (randomRIO(1,215828) :: IO Integer)
