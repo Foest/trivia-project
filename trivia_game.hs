@@ -19,18 +19,19 @@ init_game
 
 --will eventually return a category based off of arg. not sure if this is the
 --best way to accomplish this
-get_category arg = do
+get_category :: Char -> IO Connection -> [[(String, SqlValue)]]
+get_category arg connection = do
   case arg of
-    'j' -> round_one_category
-    'd' -> round_two_category
-    'f' -> round_three_category
+    'j' -> round_one_category connection
+    'd' -> round_two_category connection
+    'f' -> round_three_category connection
     _ -> [[]]
 
 --functions to return categories for specific rounds
 --one thing these should do is set the values for each question
-round_one_category = [[]]
-round_two_category =[[]]
-round_three_category = [[]]
+round_one_category connection = [[]]
+round_two_category connection = [[]]
+round_three_category connection = [[]]
 
 --grabs a random category from db, prints the questions
 get_random_category connection = do
@@ -56,3 +57,6 @@ print_category statementResults = do
   mapM_ print_category_helper statementResults
 
 print_category_helper statementResult = mapM_ (putStrLn . fromSql . snd) statementResult
+
+
+
