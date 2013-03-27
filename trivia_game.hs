@@ -57,6 +57,3 @@ print_category statementResults = do
   mapM_ print_category_helper statementResults
 
 print_category_helper statementResult = mapM_ (putStrLn . fromSql . snd) statementResult
-
-
-
