@@ -49,8 +49,8 @@ print_db_tables connection = do
   mapM_ putStrLn db_tables
   return ()
 
---should print out an entire category, at the moment only prints name/number of
---questions
+--given the results of a query, prints out the total number of questions
+--returned, as well as the questions
 print_category statementResults = do
   putStrLn . show . length $ statementResults
   putStrLn categoryName
