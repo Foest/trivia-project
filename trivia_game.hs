@@ -17,6 +17,21 @@ init_category
 init_game
 -}
 
+--will eventually return a category based off of arg. not sure if this is the
+--best way to accomplish this
+get_category arg = do
+  case arg of
+    'j' -> round_one_category
+    'd' -> round_two_category
+    'f' -> round_three_category
+    _ -> [[]]
+
+--functions to return categories for specific rounds
+--one thing these should do is set the values for each question
+round_one_category = [[]]
+round_two_category =[[]]
+round_three_category = [[]]
+
 --grabs a random category from db, prints the questions
 get_random_category connection = do
   randomCategory <- (randomRIO(1,215828) :: IO Integer)
