@@ -53,5 +53,6 @@ print_db_tables connection = do
 --returned, as well as the questions
 print_category statementResults = do
   putStrLn . show . length $ statementResults
-  putStrLn categoryName
-  where categoryName = fromSql . snd $ (head statementResults) !! 0
+  mapM_ print_category_helper statementResults
+
+print_category_helper statementResult = mapM_ (putStrLn . fromSql . snd) statementResult
